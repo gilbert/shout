@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 2020_06_22_002300) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["link_id"], name: "index_url_words_on_link_id"
+    t.index ["word"], name: "index_url_words_on_word"
   end
 
   create_table "users", force: :cascade do |t|
