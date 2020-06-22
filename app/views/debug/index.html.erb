@@ -1,0 +1,32 @@
+<div class="min-h-screen flex items-center justify-center">
+  <div class="pt-5 pb-2 bg-white rounded border-b border-gray-200">
+    <h3 class="px-6 text-lg leading-6 font-medium text-gray-900">
+      Welcome, Developer!
+    </h3>
+
+    <ul class="mt-4">
+      <% @links.each do |icon, text, path| %>
+        <li>
+          <a href="<%= path %>" class="block hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out">
+            <div class="px-4 py-4 flex items-center sm:px-6">
+              <div class="min-w-0 flex-1 sm:flex sm:items-center sm:justify-between">
+                <div>
+                  <div class="text-sm flex leading-5 font-medium text-indigo-600 truncate">
+                    <%= render icon, class: 'mr-2 h-5 w-5 text-gray-400 flex-shrink-0' %>
+                    <%= text %>
+                  </div>
+                </div>
+              </div>
+              <div class="ml-5 flex-shrink-0">
+                <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                </svg>
+              </div>
+            </div>
+          </a>
+        </li>
+
+      <% end %>
+    </ul>
+  </div>
+</div>

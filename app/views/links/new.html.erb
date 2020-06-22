@@ -1,0 +1,38 @@
+<div class="pt-12 max-w-md w-auto mx-auto">
+  <h3 class="text-center font-header text-lg text-gray-400 leading-none">CREATE A</h3>
+  <h1 class="mt-1 text-center font-header text-5xl text-blue-600 leading-none" style="color: #2b9cda">FISH.AC URL</h1>
+
+  <% if session[:admin] %>
+    <div>
+      Welcome, admin
+
+      <%= link_to 'Visit the Admin Panel', admin_path %>
+    </div>
+  <% end %>
+
+  <% if @all_taken %>
+    <%= render 'layouts/flash', class: "mt-2", flash: [['error', "We're sorry, all words are currently taken!"]] %>
+  <% elsif @link.errors.any?%>
+    <%# Since there's only one validation, we can assume it's the url %>
+    <%= render 'layouts/flash', class: "mt-2", flash: [['alert', "Please enter a valid URL."]] %>
+  <% end %>
+
+  <%= form_with model: @link, local: true do |f| %>
+
+    <%= f.label :url, 'URL to shorten:', class: "block mt-8 text-gray-600" %>
+    <%= f.text_field :url, class: "mt-1 form-input w-full", placeholder: "https://..." %>
+
+    <select name="expire_after" class="mt-2 form-select w-full">
+      <option value="5">5 minutes</option>
+      <option value="30">30 minutes</option>
+      <option value="60">1 hour</option>
+      <option value="<%= 60 * 6 %>">6 hours</option>
+      <option value="<%= 60 * 12 %>">12 hours</option>
+    </select>
+
+    <button
+      type="submit"
+      class="mt-3 py-4 px-4 text-lg w-full rounded text-blue-100 bg-blue-600 hover:bg-blue-500"
+    >Create Fish URL</button>
+  <% end %>
+</div>

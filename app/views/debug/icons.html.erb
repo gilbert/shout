@@ -1,0 +1,35 @@
+<div class="flex justify-center">
+  <% [@solid, @outline].each do |icons| %>
+    <div class="bg-white mx-2 my-6 py-4">
+      <% icons.map do |icon| %>
+        <% icon_path = "icons/#{icon.type}/#{icon.name}" %>
+        <div
+          x-data="{ copied: null, iconPath: '<%= icon_path %>' }"
+          class="px-4 text-center flex items-center cursor-pointer hover:underline"
+          @click="
+            copyToClipboard(`<%%= render ${iconPath}, class: 'w-6 h-6 text-gray-800' %>`)
+            copied = Date.now()
+            setTimeout(() => { copied = null }, 1000)
+          "
+        >
+          <div>
+            <%= render icon_path, class: 'w-6 h-6 text-gray-800' %>
+          </div>
+          <div x-text="copied ? 'Copied!' : iconPath" class="ml-2"></div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<script>
+  function copyToClipboard(text) {
+    var input = document.createElement('input')
+    input.setAttribute('value', text)
+    document.body.appendChild(input)
+    input.select()
+    var result = document.execCommand('copy')
+    document.body.removeChild(input)
+    return result
+  }
+</script>

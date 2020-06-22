@@ -1,0 +1,32 @@
+<div class="pt-12 max-w-md w-auto mx-auto">
+  <h3 class="text-center font-header text-lg text-gray-400 leading-none uppercase">You create a</h3>
+  <h1 class="mt-1 text-center font-header text-5xl text-blue-600 leading-none" style="color: #2b9cda">FISH.AC URL</h1>
+</div>
+
+<div class="mt-8 py-6 pb-8 px-4 bg-blue-500 text-center">
+  <h3 class="mt-4 font-header text-blue-300 text-lg leading-none uppercase">Your FISH.AC word is:</h3>
+  <h1 class="mt-2 font-header text-6xl sm:text-8xl text-white leading-none"><%= @word %></h1>
+</div>
+
+<div class="py-12 px-4 max-w-2xl w-auto mx-auto text-2xl sm:text-3xl">
+  <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start">
+    <div class="font-header text-gray-400">FISH URL</div>
+    <div class="sm:col-span-2">
+      <%= link_to "https://fish.ac/#{@word}", "/#{@word}", class: "font-header text-blue-500" %>
+    </div>
+  </div>
+
+  <div class="mt-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start">
+    <div class="font-header text-gray-400">LONG URL</div>
+    <div class="sm:col-span-2 break-all">
+      <%= link_to @link.url, @link.url, class: "font-header text-blue-500" %>
+    </div>
+  </div>
+
+  <div class="mt-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start">
+    <div class="font-header text-gray-400">EXPIRES IN</div>
+    <div class="sm:col-span-2 font-header">
+      <%= expire_time(@minute_count) %>
+    </div>
+  </div>
+</div>
