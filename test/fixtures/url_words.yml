@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  word: one
+  expires_at: 2020-06-21 19:23:00
+  link: one
+
+two:
+  word: two
+  expires_at: 2020-06-21 19:23:00
+  link: two
