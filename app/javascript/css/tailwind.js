@@ -40,6 +40,10 @@ const exportedColors = [
       },
       {
         "name": "blue-100",
+        "color": "EFF6FF"
+      },
+      {
+        "name": "blue-50",
         "color": "F6FAFE"
       }
     ]
@@ -68,9 +72,7 @@ module.exports = {
   variants: {},
 
   plugins: [
-    require('@tailwindcss/ui')({
-      layout: 'sidebar',
-    })
+    require('@tailwindcss/forms')
   ],
 
   // See https://tailwindcss.com/docs/controlling-file-size/

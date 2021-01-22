@@ -20,9 +20,9 @@
   <%= form_with model: @link, local: true do |f| %>
 
     <%= f.label :url, 'URL to shorten:', class: "block mt-8 text-gray-600" %>
-    <%= f.text_field :url, class: "mt-1 form-input w-full", placeholder: "https://..." %>
+    <%= f.text_field :url, class: "mt-1 form-input w-full rounded border-gray-300 placeholder-gray-400", placeholder: "https://..." %>
 
-    <select name="expire_after" class="mt-2 form-select w-full">
+    <select name="expire_after" class="mt-2 form-select w-full rounded border-gray-300">
       <option value="5">5 minutes</option>
       <option value="30">30 minutes</option>
       <option value="60">1 hour</option>

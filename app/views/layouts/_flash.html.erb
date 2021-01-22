@@ -3,7 +3,7 @@
     <div
       x-data="{ open: true }"
       x-show.transition.duration.600ms="open"
-      class="flex alert p-4 text-center border-l-4 <%=
+      class="flex alert p-4 text-center border-l-4 rounded <%=
         case key
         when 'alert' then 'bg-blue-200 border-blue-300'
         when 'error' then 'bg-red-100 border-red-200'
