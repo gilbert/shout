@@ -1,0 +1,20 @@
+(function(){
+  const specialAction = (function(){
+    <%= yield %>
+  })()
+  if (specialAction === 'reload') {
+    document.addEventListener('turbolinks:load', function(){
+      updateFlash()
+    }, { once: true })
+    Turbolinks.reload()
+  }
+  else {
+    updateFlash()
+  }
+
+  function updateFlash() {
+    <% if flash.any? %>
+    $flash.innerHTML = "<%= j render "layouts/flash" %>"
+    <% end %>
+  }
+})()

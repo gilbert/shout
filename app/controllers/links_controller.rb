@@ -21,7 +21,12 @@ class LinksController < ApplicationController
     if @bad_expire.nil? && @link.save
     # if @bad_expire.nil? && @link.valid?
       # Assign a short word to this link
-      url_word = UrlWord.where('expires_at < ?', DateTime.now).order(Arel.sql('RANDOM()')).limit(1).first
+      url_word = UrlWord
+        .where(admin_only: false)
+        .where('expires_at < ?', DateTime.now)
+        .order(Arel.sql('RANDOM()'))
+        .limit(1)
+        .first
 
       if url_word.nil?
         @all_taken = true

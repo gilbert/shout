@@ -1,19 +1,18 @@
-<div id="flash" class="<%= local_assigns[:class] || '' %>">
-  <% flash.each do |key, value| %>
-    <div
-      x-data="{ open: true }"
-      x-show.transition.duration.600ms="open"
-      class="flex alert p-4 text-center border-l-4 rounded <%=
-        case key
-        when 'alert' then 'bg-blue-200 border-blue-300'
-        when 'error' then 'bg-red-100 border-red-200'
-        else key
-        end
-      %>"
-      x-transition:leave="transition ease-in duration-300"
-    >
-      <div class="flex-1"><%= value %></div>
-      <span @click="open = false" class="cursor-pointer text-gray-400 hover:text-gray-800 opacity-75">✖</span>
-    </div>
-  <% end %>
-</div>
+<% flash.each do |key, value| %>
+  <div
+    x-data="{ open: true }"
+    x-show.transition.duration.600ms="open"
+    class="flex alert p-4 text-center border-l-4 rounded <%=
+      case key
+      when 'alert' then 'bg-blue-200 border-blue-300'
+      when 'error' then 'bg-red-100 border-red-200'
+      when 'success' then 'bg-green-100 border-green-200'
+      else key
+      end
+    %>"
+    x-transition:leave="transition ease-in duration-300"
+  >
+    <div class="flex-1"><%= value %></div>
+    <span @click="open = false" class="cursor-pointer text-gray-400 hover:text-gray-800 opacity-75">✖</span>
+  </div>
+<% end %>

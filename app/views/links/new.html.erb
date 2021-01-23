@@ -1,14 +1,24 @@
+<% if session[:admin] %>
+  <div class="rounded-md border-b border-gray-300 p-4">
+    <div class="flex items-center">
+      <div class="flex-shrink-0">
+        👋
+      </div>
+      <div class="ml-3 flex-1 md:flex md:justify-between">
+        <p class="text-sm text-green-800 font-medium">
+          Welcome, admin!
+        </p>
+        <p class="mt-3 text-sm md:mt-0 md:ml-6">
+          <a href="<%= admin_path %>" class="whitespace-nowrap font-medium text-green-700 hover:text-green-600">Visit the Admin Panel <span aria-hidden="true">&rarr;</span></a>
+        </p>
+      </div>
+    </div>
+  </div>
+<% end %>
+
 <div class="pt-12 max-w-md w-auto mx-auto">
   <h3 class="text-center font-header text-lg text-gray-400 leading-none">CREATE A</h3>
   <h1 class="mt-1 text-center font-header text-5xl text-blue-600 leading-none" style="color: #2b9cda">FISH.AC URL</h1>
-
-  <% if session[:admin] %>
-    <div>
-      Welcome, admin
-
-      <%= link_to 'Visit the Admin Panel', admin_path %>
-    </div>
-  <% end %>
 
   <% if @all_taken %>
     <%= render 'layouts/flash', class: "mt-2", flash: [['error', "We're sorry, all words are currently taken!"]] %>

@@ -1,2 +1,50 @@
-<h1>Admin#new</h1>
-<p>Find me in app/views/admin/new.html.erb</p>
+<div id="$flash" class="fixed left-0 right-0 shadow-md"><%= render 'layouts/flash' %></div>
+
+<div class="pt-12 px-4 max-w-md mx-auto">
+  <h3 class="text-center font-header text-lg text-gray-400 leading-none">WELCOME TO THE</h3>
+  <h1 class="mt-1 text-center font-header text-5xl text-blue-600 leading-none" style="color: #2b9cda">ADMIN PANEL</h1>
+
+  <%= form_with model: @link, :url => admin_path, id: '$wordForm' do |f| %>
+
+    <%= f.label :url, 'URL to Shorten:', class: "block mt-8 text-gray-600" %>
+    <%= f.text_field :url, class: "mt-1 form-input w-full rounded border-gray-300 placeholder-gray-400", placeholder: "https://..." %>
+
+    <label for="word" class="block mt-4 text-gray-600">English word to use:</label>
+    <input name="word" type="text" class="mt-1 form-input w-full rounded border-gray-300 placeholder-gray-400" />
+
+    <button
+      type="submit"
+      class="mt-3 py-4 px-4 text-lg w-full rounded text-blue-100 bg-blue-600 hover:bg-blue-500"
+    >
+      Create Permanent URL
+    </button>
+
+  <% end %>
+
+</div>
+
+<div class="mt-12 sm:px-6 sm:block max-w-5xl mx-auto">
+  <div class="align-middle inline-block min-w-full border-b border-gray-200 sm:border-l sm:border-r">
+    <table class="min-w-full">
+      <thead>
+        <tr class="border-t border-gray-200">
+          <th class="<%= table_cell_spacing %> border-b border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Word
+          </th>
+          <th class="<%= table_cell_spacing %> border-b border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <span class="lg:pl-2">Url</span>
+          </th>
+          <th class="<%= table_cell_spacing %> hidden md:table-cell border-b border-gray-200 bg-gray-50 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Created At
+          </th>
+          <th class="pr-3 sm:pr-6 py-3 border-b border-gray-200 bg-gray-50 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
+        </tr>
+      </thead>
+      <tbody id="$tableBody" class="bg-white divide-y divide-gray-100" x-max="1">
+        <% @admin_words.each do |word| %>
+          <%= render 'word_row', word: word %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
